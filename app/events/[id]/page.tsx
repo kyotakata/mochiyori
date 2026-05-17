@@ -66,9 +66,13 @@ export default function EventDetailPage() {
   const handleAddItem = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!formData.memberId || !formData.description.trim() || !formData.amount) {
-      alert('全ての項目を入力してください')
+    if (!formData.memberId || !formData.description.trim()) {
+      alert('項目を入力してください')
       return
+    }
+
+    if (!formData.amount) {
+      formData.amount = "0";
     }
 
     setSubmitting(true)
@@ -142,10 +146,7 @@ export default function EventDetailPage() {
           <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">持ち物を追加</h2>
             <form onSubmit={handleAddItem} className="space-y-4">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  誰が持ってくるか
-                </label>
+              <div className='flex gap-3'>
                 <select
                   value={formData.memberId}
                   onChange={(e) => setFormData({ ...formData, memberId: e.target.value })}
@@ -158,12 +159,11 @@ export default function EventDetailPage() {
                     </option>
                   ))}
                 </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  持ち物
+                <label className="block font-semibold text-gray-700 mt-2">
+                  が
                 </label>
+              </div>
+              <div className='flex gap-3'>
                 <input
                   type="text"
                   value={formData.description}
@@ -171,8 +171,10 @@ export default function EventDetailPage() {
                   placeholder="例: テント、食材、etc"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
+                <label className="block font-semibold text-gray-700 mt-2 whitespace-nowrap">
+                  を持ち寄る。
+                </label>
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   金額（円）
@@ -181,7 +183,7 @@ export default function EventDetailPage() {
                   type="number"
                   value={formData.amount}
                   onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
-                  placeholder="0"
+                  placeholder="0（任意）"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
