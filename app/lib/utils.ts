@@ -1,48 +1,70 @@
-// lib/utils.ts
 export function generateShareUrl(): string {
   return Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
 }
 
-export function cn(...classes: (string | undefined | false)[]): string {
+export function cn(...classes: (string | undefined | false | null)[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
-// 割り勘計算ロジック
 export interface Settlement {
   from: string
   to: string
   amount: number
 }
 
+interface SplitMember {
+  member: { id: string; name: string }
+}
+
 export function calculateSettlements(
   members: Array<{ id: string; name: string }>,
-  items: Array<{ memberId: string; amount: number }>
+  items: Array<{
+    memberId: string
+    amount: number
+    splitAmong?: SplitMember[]
+  }>
 ): Settlement[] {
-  // メンバごとの支払い額を計算
-  const memberTotals: { [key: string]: number } = {}
-  members.forEach(member => {
-    memberTotals[member.id] = 0
-  })
+  const memberMap = new Map(members.map(m => [m.id, m.name]))
+  const balances = new Map<string, number>()
+  members.forEach(m => balances.set(m.id, 0))
 
   items.forEach(item => {
-    memberTotals[item.memberId] += item.amount
+    const selectedMembers = item.splitAmong?.length
+      ? item.splitAmong.map(s => s.member)
+      : []
+
+    let splitTargets: Array<{ id: string; name: string }>
+    if (selectedMembers.length > 0) {
+      const includedIds = new Set(selectedMembers.map(m => m.id))
+      includedIds.add(item.memberId)
+      splitTargets = members.filter(m => includedIds.has(m.id))
+    } else {
+      splitTargets = members
+    }
+
+    const perPerson = item.amount / splitTargets.length
+
+    splitTargets.forEach(target => {
+      const current = balances.get(target.id) || 0
+      balances.set(target.id, current - perPerson)
+    })
+
+    const payerCurrent = balances.get(item.memberId) || 0
+    balances.set(item.memberId, payerCurrent + item.amount)
   })
 
-  // 全体の平均額を計算
-  const totalAmount = Object.values(memberTotals).reduce((a, b) => a + b, 0)
-  const averageAmount = totalAmount / members.length
+  const debtors: { id: string; name: string; balance: number }[] = []
+  const creditors: { id: string; name: string; balance: number }[] = []
 
-  // 各メンバの収支を計算
-  const balances = members.map(member => ({
-    id: member.id,
-    name: member.name,
-    balance: memberTotals[member.id] - averageAmount
-  }))
+  balances.forEach((balance, id) => {
+    const name = memberMap.get(id) || 'Unknown'
+    if (balance < -0.01) debtors.push({ id, name, balance })
+    else if (balance > 0.01) creditors.push({ id, name, balance })
+  })
 
-  // 収支がプラス（返金対象）とマイナス（支払い対象）に分ける
-  const debtors = balances.filter(b => b.balance < 0).sort((a, b) => a.balance - b.balance)
-  const creditors = balances.filter(b => b.balance > 0).sort((a, b) => b.balance - a.balance)
+  debtors.sort((a, b) => a.balance - b.balance)
+  creditors.sort((a, b) => b.balance - a.balance)
 
   const settlements: Settlement[] = []
 
@@ -53,20 +75,22 @@ export function calculateSettlements(
       if (creditor.balance <= 0.01) continue
 
       const amountToTransfer = Math.min(amountNeeded, creditor.balance)
+      const rounded = Math.round(amountToTransfer * 100) / 100
+      if (rounded <= 0.01) continue
 
       settlements.push({
         from: debtor.name,
         to: creditor.name,
-        amount: Math.round(amountToTransfer * 100) / 100
+        amount: rounded,
       })
 
-      debtor.balance += amountToTransfer
-      creditor.balance -= amountToTransfer
-      amountNeeded -= amountToTransfer
+      debtor.balance += rounded
+      creditor.balance -= rounded
+      amountNeeded -= rounded
 
       if (amountNeeded < 0.01) break
     }
   }
 
-  return settlements.filter(s => s.amount > 0.01)
+  return settlements
 }
