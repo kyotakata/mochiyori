@@ -1,22 +1,19 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="flex flex-col items-center justify-center min-h-screen px-4">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">Mochiyori</h1>
-          <p className="text-xl text-gray-600 mb-8">
-            イベントの持ち物と割り勘を簡単管理
-          </p>
-          <Link
-            href="/events/new"
-            className="inline-block px-8 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition"
-          >
+    <main className="min-h-screen bg-background flex items-center justify-center px-4">
+      <div className="text-center max-w-md">
+        <h1 className="text-5xl font-bold text-foreground mb-4">Mochiyori</h1>
+        <p className="text-lg text-muted-foreground mb-8">
+          イベントの持ち物と割り勘を簡単管理
+        </p>
+        <Link href="/events/new">
+          <Button size="lg" className="text-base px-10 py-6">
             はじめる
-          </Link>
-        </div>
+          </Button>
+        </Link>
       </div>
     </main>
   );
