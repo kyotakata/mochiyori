@@ -26,29 +26,43 @@ model Event {
 }
 
 model Member {
-  id        String     @id @default(cuid())
-  eventId   String
-  event     Event      @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  name      String
-  createdAt DateTime   @default(now())
+  id          String      @id @default(cuid())
+  eventId     String
+  event       Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name        String
+  createdAt   DateTime    @default(now())
 
-  items     Item[]
+  items       Item[]
+  splitItems  ItemSplit[]
 
   @@unique([eventId, name])
   @@index([eventId])
 }
 
 model Item {
-  id        String     @id @default(cuid())
-  eventId   String
-  event     Event      @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  memberId  String
-  member    Member     @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  id          String      @id @default(cuid())
+  eventId     String
+  event       Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  memberId    String
+  member      Member      @relation(fields: [memberId], references: [id], onDelete: Cascade)
   description String
-  amount    Float
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  amount      Float
+  splitAmong  ItemSplit[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 
   @@index([eventId])
+  @@index([memberId])
+}
+
+model ItemSplit {
+  id       String @id @default(cuid())
+  itemId   String
+  item     Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  memberId String
+  member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([itemId, memberId])
+  @@index([itemId])
   @@index([memberId])
 }
