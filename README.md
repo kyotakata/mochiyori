@@ -29,6 +29,30 @@
 | **データベース** | Supabase (PostgreSQL) |
 | **インフラ** | Vercel |
 
+### システム構成図
+
+```mermaid
+flowchart LR
+    subgraph Client["クライアント"]
+        Browser[ブラウザ]
+    end
+
+    subgraph Hosting["ホスティング Vercel"]
+        Next[Next.js 16 App Router]
+        API[API Routes]
+        Pages[Pages / Components<br/>shadcn/ui + Tailwind CSS 4]
+    end
+
+    subgraph Storage["データベース Supabase"]
+        PG[PostgreSQL]
+    end
+
+    Browser -->|HTTP| Next
+    Next --> API
+    Next --> Pages
+    API -->|Prisma 7 ORM| PG
+```
+
 ### 採用理由
 
 - **Next.js 16 + App Router**: サーバーコンポーネントと API Routes を同一プロジェクトで管理でき、小規模アプリに最適。
