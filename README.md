@@ -37,7 +37,7 @@ flowchart LR
         Browser[ブラウザ]
     end
 
-    subgraph Hosting["ホスティング Vercel"]
+    subgraph Hosting["ホスティング Vercel（TypeScript）"]
         Next[Next.js 16 App Router]
         API[API Routes]
         Pages[Pages / Components<br/>shadcn/ui + Tailwind CSS 4]
