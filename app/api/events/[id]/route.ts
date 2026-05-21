@@ -73,18 +73,31 @@ export async function PATCH(
     }
 
     if (members && Array.isArray(members)) {
-      const validMembers = members.filter((m: string) => m.trim())
-      if (validMembers.length > 0) {
-        await prisma.member.deleteMany({
+      const validNewNames = members
+        .map((m: string) => m.trim())
+        .filter(Boolean)
+
+      if (validNewNames.length > 0) {
+        const existingMembers = await prisma.member.findMany({
           where: { eventId: event.id },
         })
+        const existingNames = new Set(existingMembers.map(m => m.name))
+        const existingNameToId = new Map(existingMembers.map(m => [m.name, m.id]))
 
-        await prisma.member.createMany({
-          data: validMembers.map((name: string) => ({
-            eventId: event.id,
-            name: name.trim(),
-          })),
-        })
+        const toAdd = validNewNames.filter(name => !existingNames.has(name))
+        if (toAdd.length > 0) {
+          await prisma.member.createMany({
+            data: toAdd.map(name => ({ eventId: event.id, name })),
+          })
+        }
+
+        const toRemove = existingMembers.filter(m => !validNewNames.includes(m.name))
+        for (const member of toRemove) {
+          const itemCount = await prisma.item.count({ where: { memberId: member.id } })
+          if (itemCount === 0) {
+            await prisma.member.delete({ where: { id: member.id } })
+          }
+        }
       }
     }
 

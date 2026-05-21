@@ -207,6 +207,17 @@ export default function EventDetailPage() {
       })
       if (!res.ok) throw new Error('Failed to update event')
       const data = await res.json()
+      if (event) {
+        const removedNames = event.members
+          .filter(m => !validMembers.includes(m.name))
+          .map(m => m.name)
+        if (removedNames.length > 0) {
+          const stillHasItems = event.items.some(item => removedNames.includes(item.member.name))
+          if (stillHasItems) {
+            alert('持ち物があるメンバは削除できませんでした（持ち物を先に削除してください）')
+          }
+        }
+      }
       setEvent(data)
       setShowEditEvent(false)
     } catch (error) {
