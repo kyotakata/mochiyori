@@ -28,12 +28,12 @@
 
 | # | 画面 | URL | プレビュー | 説明 |
 |---|------|-----|-----------|------|
-| 1 | **トップページ** | `/` | ![top](images/top.png) | 「はじめる」ボタンのみのシンプルなランディング |
-| 2 | **イベント作成（入力）** | `/events/new` | ![create](images/create.png) | イベント名とメンバー名を入力 |
-| 3 | **イベント作成（完了）** | `/events/new` | ![created](images/created.png) | 作成完了後、共有用URLが表示される |
-| 4 | **イベント詳細** | `/events/[shareUrl]` | ![detail](images/detail.png) | 持ち物一覧・割り勘結果を1画面で表示 |
-| 5 | **持ち物追加フォーム** | `/events/[shareUrl]` | ![add-item](images/add-item.png) | メンバー・品名・金額・割り勘対象を入力 |
-| 6 | **編集ダイアログ** | `/events/[shareUrl]` | ![edit-event](images/edit-event.png) | イベント名・メンバー編集ダイアログ |
+| 1 | **トップページ** | `/` | ![top](public/images/top.png) | 「はじめる」ボタンのみのシンプルなランディング |
+| 2 | **イベント作成（入力）** | `/events/new` | ![create](public/images/create.png) | イベント名とメンバー名を入力 |
+| 3 | **イベント作成（完了）** | `/events/new` | ![created](public/images/created.png) | 作成完了後、共有用URLが表示される |
+| 4 | **イベント詳細** | `/events/[shareUrl]` | ![detail](public/images/detail.png) | 持ち物一覧・割り勘結果を1画面で表示 |
+| 5 | **持ち物追加フォーム** | `/events/[shareUrl]` | ![add-item](public/images/add-item.png) | メンバー・品名・金額・割り勘対象を入力 |
+| 6 | **編集ダイアログ** | `/events/[shareUrl]` | ![edit-event](public/images/edit-event.png) | イベント名・メンバー編集ダイアログ |
 
 ### 各画面の詳細
 
