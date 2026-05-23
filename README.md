@@ -1,3 +1,4 @@
+
 # Mochiyori（モチヨリ）
 
 イベントの**持ち物管理**と**割り勘計算**を一元化する Web アプリケーション。
@@ -6,11 +7,16 @@
 
 ---
 
+
+
+
+
+
 ## 機能一覧
 
 | 機能 | 説明 |
 |---|---|
-| **イベント作成** | イベント名とメンバーを入力し、共有用 URL を発行 |
+| **イベント作成** | イベント名とメンバーを入力し、共有用 URL を発行<br><img width="800" height="767" alt="image" src="https://github.com/user-attachments/assets/d386c0e7-a493-4f44-bc7f-67a2a7312f18" /> |
 | **持ち物追加** | メンバー・品名・金額を登録し、一覧に反映 |
 | **持ち物編集・削除** | 登録済みの項目を後から変更・削除可能 |
 | **割り勘計算** | 各自の支払い額を集計し、過不足を精算する「誰が誰にいくら払うか」を自動算出 |
@@ -58,6 +64,10 @@
 
 ---
 
+## システム構成図
+
+
+
 ## 技術スタック
 
 | 層 | 技術 |
@@ -69,31 +79,8 @@
 | **データベース** | Supabase (PostgreSQL) |
 | **インフラ** | Vercel |
 
-### システム構成図
 
-```mermaid
-flowchart LR
-    subgraph Client["クライアント"]
-        Browser[ブラウザ]
-    end
-
-    subgraph Hosting["ホスティング Vercel（TypeScript）"]
-        Next[Next.js 16 App Router]
-        API[API Routes]
-        Pages[Pages / Components<br/>shadcn/ui + Tailwind CSS 4]
-    end
-
-    subgraph Storage["データベース Supabase"]
-        PG[PostgreSQL]
-    end
-
-    Browser -->|HTTP| Next
-    Next --> API
-    Next --> Pages
-    API -->|Prisma 7 ORM| PG
-```
-
-### 採用理由
+### 技術選定理由
 
 - **Next.js 16 + App Router**: サーバーコンポーネントと API Routes を同一プロジェクトで管理でき、小規模アプリに最適。
 - **Supabase + Prisma**: マネージド Postgres で運用コストを抑えつつ、Prisma の型安全なクエリで開発速度を向上。
@@ -140,37 +127,6 @@ erDiagram
 - `Member` には `(eventId, name)` の複合一意制約を設定し、同名メンバーの重複を防止。
 - カスケード削除により、イベント削除で関連するメンバー・持ち物も自動削除。
 
----
-
-## ディレクトリ構成
-
-```
-mochiyori/
-├── app/
-│   ├── page.tsx              # トップページ（/）
-│   ├── layout.tsx            # ルートレイアウト
-│   ├── globals.css           # グローバルスタイル（Tailwind）
-│   ├── events/
-│   │   ├── new/page.tsx      # イベント作成ページ
-│   │   └── [id]/page.tsx     # イベント詳細ページ
-│   ├── api/
-│   │   └── events/
-│   │       ├── route.ts      # POST /api/events
-│   │       └── [id]/
-│   │           ├── route.ts  # GET /api/events/[id]
-│   │           └── items/
-│   │               └── route.ts  # POST /api/events/[id]/items
-│   └── lib/
-│       ├── prisma.ts         # Prisma クライアント初期化
-│       └── utils.ts          # 共有URL生成・割り勘計算ロジック
-├── prisma/
-│   └── schema.prisma         # データモデル定義
-├── public/                   # 静的ファイル
-├── .env                      # 環境変数（DATABASE_URL）
-├── next.config.ts
-├── tailwind.config.ts
-└── tsconfig.json
-```
 
 ---
 
