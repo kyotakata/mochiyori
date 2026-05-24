@@ -1,65 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net">
-  <diagram id="NsiGTh1zKWdJXj_lPqto" name="システム構成図">
-    <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="720" pageHeight="680" math="0" shadow="0">
+  <diagram id="1" name="システム構成図">
+    <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="800" pageHeight="700" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- Client -->
-        <mxCell id="browser" value="🌐&lt;b&gt; ブラウザ&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#3B82F6;fontSize=13;fontColor=#1E3A5F;" vertex="1" parent="1">
-          <mxGeometry x="90" y="200" width="140" height="60" />
+        <mxCell id="2" value="🌐 ブラウザ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#3B82F6;fontSize=13;fontColor=#1E3A5F;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="140" height="60" />
         </mxCell>
-
-        <!-- Vercel Container -->
-        <mxCell id="vercel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;dashed=0;verticalAlign=top;fontSize=13;fontColor=#374151;" vertex="1" parent="1">
-          <mxGeometry x="310" y="90" width="340" height="280" />
+        <mxCell id="3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;verticalAlign=top;fontSize=13;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="310" y="100" width="380" height="280" />
         </mxCell>
-        <mxCell id="vercel_title" value="&lt;b&gt;☁️ Vercel&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=14;fontColor=#374151;labelBackgroundColor=#F3F4F6;" vertex="1" parent="1">
-          <mxGeometry x="310" y="96" width="340" height="24" />
+        <mxCell id="4" value="<b>☁️ Vercel</b>" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=14;fontColor=#374151;" vertex="1" parent="1">
+          <mxGeometry x="310" y="105" width="380" height="24" />
         </mxCell>
-
-        <!-- Components inside Vercel -->
-        <mxCell id="nextjs" value="&lt;b&gt;▲ Next.js 16&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px&quot;&gt;App Router&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#333333;fontSize=12;fontColor=#FFFFFF;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="335" y="135" width="290" height="48" />
+        <mxCell id="5" value="<b>▲ Next.js 16</b><br><span style=&quot;font-size:10px&quot;>App Router</span>" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#333333;fontSize=12;fontColor=#FFFFFF;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="335" y="145" width="330" height="48" />
         </mxCell>
-        <mxCell id="shadcn" value="&lt;b&gt;🎨 shadcn/ui + Tailwind CSS 4&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1D5DB;fontSize=12;fontColor=#374151;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="335" y="195" width="290" height="44" />
+        <mxCell id="6" value="<b>🎨 shadcn/ui + Tailwind CSS 4</b>" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D1D5DB;fontSize=12;fontColor=#374151;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="335" y="205" width="330" height="44" />
         </mxCell>
-        <mxCell id="api" value="&lt;b&gt;⚙️ API Routes&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px&quot;&gt;TypeScript&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#475569;fontSize=12;fontColor=#FFFFFF;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="335" y="252" width="290" height="48" />
+        <mxCell id="7" value="<b>⚙️ API Routes</b><br><span style=&quot;font-size:10px&quot;>TypeScript</span>" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#475569;fontSize=12;fontColor=#FFFFFF;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="335" y="262" width="330" height="48" />
         </mxCell>
-
-        <!-- Arrow Browser → Vercel -->
-        <mxCell id="arrow1" value="HTTP" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;fontColor=#6B7280;strokeColor=#6B7280;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="browser" target="vercel">
+        <mxCell id="8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#6B7280;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="2" target="3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Prisma label -->
-        <mxCell id="prisma" value="&lt;b&gt;🔗 Prisma 7&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px&quot;&gt;ORM&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontColor=#92400E;arcSize=8;" vertex="1" parent="1">
-          <mxGeometry x="405" y="390" width="150" height="42" />
+        <mxCell id="9" value="HTTP" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#6B7280;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="240" y="245" relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Supabase Container -->
-        <mxCell id="supabase" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#22C55E;dashed=0;verticalAlign=top;fontSize=13;fontColor=#166534;" vertex="1" parent="1">
-          <mxGeometry x="310" y="480" width="340" height="160" />
+        <mxCell id="10" value="<b>🔗 Prisma 7</b><br><span style=&quot;font-size:10px&quot;>ORM</span>" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=12;fontColor=#92400E;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="410" width="160" height="42" />
         </mxCell>
-        <mxCell id="supabase_title" value="&lt;b&gt;🗄️ Supabase&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=14;fontColor=#166534;labelBackgroundColor=#F0FDF4;" vertex="1" parent="1">
-          <mxGeometry x="310" y="486" width="340" height="24" />
-        </mxCell>
-
-        <!-- PostgreSQL -->
-        <mxCell id="pg" value="&lt;b&gt;🐘 PostgreSQL&lt;/b&gt;" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#3B82F6;strokeColor=#2563EB;fontSize=13;fontColor=#FFFFFF;boundedLbl=1;" vertex="1" parent="1">
-          <mxGeometry x="390" y="540" width="180" height="60" />
-        </mxCell>
-
-        <!-- Arrow Vercel → Prisma -->
-        <mxCell id="arrow2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B7280;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="vercel" target="prisma">
+        <mxCell id="11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#6B7280;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="3" target="10">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Arrow Prisma → Supabase -->
-        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B7280;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="prisma" target="supabase">
+        <mxCell id="12" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#22C55E;verticalAlign=top;fontSize=13;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="310" y="490" width="380" height="150" />
+        </mxCell>
+        <mxCell id="13" value="<b>🗄️ Supabase</b>" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=14;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="310" y="495" width="380" height="24" />
+        </mxCell>
+        <mxCell id="14" value="<b>🐘 PostgreSQL</b>" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#3B82F6;strokeColor=#2563EB;fontSize=13;fontColor=#FFFFFF;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="550" width="180" height="60" />
+        </mxCell>
+        <mxCell id="15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#6B7280;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="10" target="12">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
