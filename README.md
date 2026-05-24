@@ -66,9 +66,8 @@
 
 ## システム構成図
 
-![システム構成図](images/architecture.svg)
+![システム構成図](public/images/mochiyori_architecture.svg)
 
-> 編集用ファイル: `public/images/architecture.drawio`（[app.diagrams.net](https://app.diagrams.net) で開けます）
 
 ## 技術スタック
 
