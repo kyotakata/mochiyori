@@ -16,7 +16,7 @@
 
 | 機能 | 説明 |
 |---|---|
-| **イベント作成** | イベント名とメンバーを入力し、共有用 URL を発行<br><img width="800" height="767" alt="image" src="https://github.com/user-attachments/assets/d386c0e7-a493-4f44-bc7f-67a2a7312f18" /> |
+| **イベント作成** | イベント名とメンバーを入力し、共有用 URL を発行　|
 | **持ち物追加** | メンバー・品名・金額を登録し、一覧に反映 |
 | **持ち物編集・削除** | 登録済みの項目を後から変更・削除可能 |
 | **割り勘計算** | 各自の支払い額を集計し、過不足を精算する「誰が誰にいくら払うか」を自動算出 |
@@ -28,12 +28,12 @@
 
 | # | 画面 | URL | プレビュー | 説明 |
 |---|------|-----|-----------|------|
-| 1 | **トップページ** | `/` | ![top](images/top.png) | 「はじめる」ボタンのみのシンプルなランディング |
-| 2 | **イベント作成（入力）** | `/events/new` | ![create](images/create.png) | イベント名とメンバー名を入力 |
-| 3 | **イベント作成（完了）** | `/events/new` | ![created](images/created.png) | 作成完了後、共有用URLが表示される |
-| 4 | **イベント詳細** | `/events/[shareUrl]` | ![detail](images/detail.png) | 持ち物一覧・割り勘結果を1画面で表示 |
-| 5 | **持ち物追加フォーム** | `/events/[shareUrl]` | ![add-item](images/add-item.png) | メンバー・品名・金額・割り勘対象を入力 |
-| 6 | **編集ダイアログ** | `/events/[shareUrl]` | ![edit-event](images/edit-event.png) | イベント名・メンバー編集ダイアログ |
+| 1 | **トップページ** | `/` | ![top](public/images/top.png) | 「はじめる」ボタンのみのシンプルなランディング |
+| 2 | **イベント作成（入力）** | `/events/new` | ![create](public/images/create.png) | イベント名とメンバー名を入力 |
+| 3 | **イベント作成（完了）** | `/events/new` | ![created](public/images/created.png) | 作成完了後、共有用URLが表示される |
+| 4 | **イベント詳細** | `/events/[shareUrl]` | ![detail](public/images/detail.png) | 持ち物一覧・割り勘結果を1画面で表示 |
+| 5 | **持ち物追加フォーム** | `/events/[shareUrl]` | ![add-item](public/images/add-item.png) | メンバー・品名・金額・割り勘対象を入力 |
+| 6 | **編集ダイアログ** | `/events/[shareUrl]` | ![edit-event](public/images/edit-event.png) | イベント名・メンバー編集ダイアログ |
 
 ### 各画面の詳細
 
