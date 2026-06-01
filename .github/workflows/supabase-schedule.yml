@@ -1,0 +1,22 @@
+name: Call Supabase API Weekly
+
+on:
+  schedule:
+    # 毎週月曜日の午前9時（日本時間）に実行する設定
+    # UTC（世界標準時）で指定するため、日本時間(JST)の24:00（月曜0時）＝ UTCの日曜15:00 となります
+    - cron: '0 15 * * 0'
+  
+  # 手動でテスト実行できるようにするための設定
+  workflow_dispatch:
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Invoke Supabase Edge Function / API
+        run: |
+          curl -X POST "${{ secrets.SUPABASE_URL }}/functions/v1/your-endpoint-name" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{"message": "triggered by GitHub Actions"}'
