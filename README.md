@@ -79,6 +79,7 @@
 | **ORM** | Prisma 7 |
 | **データベース** | Supabase (PostgreSQL) |
 | **インフラ** | Vercel |
+| **CI/CD** | Github Actions |
 
 
 ### 技術選定理由
@@ -87,7 +88,7 @@
 - **Supabase + Prisma**: マネージド Postgres で運用コストを抑えつつ、Prisma の型安全なクエリで開発速度を向上。
 - **Tailwind CSS 4**: ユーティリティファーストでスタイルを完結させ、コンポーネント設計に集中。
 - **Vercel**: Next.js との親和性が高く、CI/CD が最小構成で完了。
-
+- **Github Actions**: 週次でSupabaseのAPIエンドポイントへリクエストを送信し、無料プラン環境におけるデータベースの自動停止を防止。
 ---
 
 ## データモデル
