@@ -14,9 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Invoke Supabase Edge Function / API
+      - name: Invoke Supabase API to Keep Alive
         run: |
-          curl -X POST "${{ secrets.SUPABASE_URL }}/functions/v1/your-endpoint-name" \
+          curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/Event?select=count" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
-          -H "Content-Type: application/json" \
-          -d '{"message": "triggered by GitHub Actions"}'
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}"
